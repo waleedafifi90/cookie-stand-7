@@ -8,13 +8,15 @@ const seattle = {
   numOfCustPerHour: [],//randomValue(min,max)(array)
   totalCookiesPerHour: [],//NumOfCust*avgCookie
   totalSales: 0,
-  temp: [],
   getnum: function () {
     for (let i = 0; i < workingHours.length; i++) {
-      this.temp = Math.ceil(generateRandomNumber(this.minCust, this.maxCust));
-      Math.ceil(this.numOfCustPerHour.push(this.temp)[i]);
-      Math.ceil(this.totalCookiesPerHour.push(this.temp * this.AvgCookie)[i]);
+      // this.temp = Math.ceil(generateRandomNumber(this.minCust, this.maxCust));
+      // Math.ceil(this.numOfCustPerHour.push(this.temp)[i]);
+      // Math.ceil(this.totalCookiesPerHour.push(this.temp * this.AvgCookie)[i]);
+      this.totalCookiesPerHour.push(Math.ceil(this.AvgCookie*generateRandomNumber(this.minCust,this.maxCust)));
+      // this.numOfCustPerHour.push(generateRandomNumber(this.minCust,this.maxCust))[i];
     }
+    console.log(this.totalCookiesPerHour);
   },
   render: function () {
     const parentElement = document.getElementById('shop');
@@ -22,16 +24,15 @@ const seattle = {
     const h1Element = document.createElement('h1');
     parentElement.appendChild(articleElement);
     parentElement.appendChild(h1Element);
-    h1Element.textContent = 'Welcome to Salmon cookie shop';
     const pElement = document.createElement('p');
     articleElement.appendChild(pElement);
-    pElement.textContent = `${this.name} shop has ${this.minCust} min number of customers, and ${this.maxCust} max number of customers and ${this.AvgCookie} avg cookie number per customer`;
+    pElement.textContent = `${this.name}`;
     const ulElement = document.createElement('ul');
     articleElement.appendChild(ulElement);
     for (let i = 0; i < workingHours.length; i++) {
       const liElement = document.createElement('li');
       ulElement.appendChild(liElement);
-      liElement.textContent = `at ${workingHours[i]} we have ${this.numOfCustPerHour[i]} customers and we sell ${this.totalCookiesPerHour[i]} Cookies`;
+      liElement.textContent = `at ${workingHours[i]}: ${this.totalCookiesPerHour[i]} Cookies`;
     }
 
   }
@@ -55,9 +56,7 @@ const Tokyo = {
   temp: [],
   getnum: function () {
     for (let i = 0; i < workingHours.length; i++) {
-      this.temp = Math.ceil(generateRandomNumber(this.minCust, this.maxCust));
-      Math.ceil(this.numOfCustPerHour.push(this.temp)[i]);
-      Math.ceil(this.totalCookiesPerHour.push(this.temp * this.AvgCookie)[i]);
+      this.totalCookiesPerHour.push(Math.ceil(this.AvgCookie*generateRandomNumber(this.minCust,this.maxCust)));
     }
   },
   render: function () {
@@ -66,16 +65,15 @@ const Tokyo = {
     const h1Element = document.createElement('h1');
     parentElement.appendChild(articleElement);
     parentElement.appendChild(h1Element);
-    h1Element.textContent = 'Welcome to Salmon cookie shop';
     const pElement = document.createElement('p');
     articleElement.appendChild(pElement);
-    pElement.textContent = `${this.name} shop has ${this.minCust} min number of customers, and ${this.maxCust} max number of customers and ${this.AvgCookie} avg cookie number per customer`;
+    pElement.textContent = `${this.name}`;
     const ulElement = document.createElement('ul');
     articleElement.appendChild(ulElement);
     for (let i = 0; i < workingHours.length; i++) {
       const liElement = document.createElement('li');
       ulElement.appendChild(liElement);
-      liElement.textContent = `at ${workingHours[i]} we have ${this.numOfCustPerHour[i]} customers and we sell ${this.totalCookiesPerHour[i]} Cookies`;
+      liElement.textContent = `at ${workingHours[i]}: ${this.totalCookiesPerHour[i]} Cookies`;
     }
 
   }
@@ -88,7 +86,6 @@ Tokyo.render();
 //---------------------------------------------------------------------------------------
 const Dubai = {
   name: 'Dubai',
-  image: './img/Salmon.PNG',
   minCust: 11,
   maxCust: 38,
   AvgCookie: 3.7,
@@ -98,9 +95,7 @@ const Dubai = {
   temp: [],
   getnum: function () {
     for (let i = 0; i < workingHours.length; i++) {
-      this.temp = Math.ceil(generateRandomNumber(this.minCust, this.maxCust));
-      Math.ceil(this.numOfCustPerHour.push(this.temp)[i]);
-      Math.ceil(this.totalCookiesPerHour.push(this.temp * this.AvgCookie)[i]);
+      this.totalCookiesPerHour.push(Math.ceil(this.AvgCookie*generateRandomNumber(this.minCust,this.maxCust)));
     }
   },
   render: function () {
@@ -109,16 +104,15 @@ const Dubai = {
     const h1Element = document.createElement('h1');
     parentElement.appendChild(articleElement);
     parentElement.appendChild(h1Element);
-    h1Element.textContent = 'Welcome to Salmon cookie shop';
     const pElement = document.createElement('p');
     articleElement.appendChild(pElement);
-    pElement.textContent = `${this.name} shop has ${this.minCust} min number of customers, and ${this.maxCust} max number of customers and ${this.AvgCookie} avg cookie number per customer`;
+    pElement.textContent = `${this.name}`;
     const ulElement = document.createElement('ul');
     articleElement.appendChild(ulElement);
     for (let i = 0; i < workingHours.length; i++) {
       const liElement = document.createElement('li');
       ulElement.appendChild(liElement);
-      liElement.textContent = `at ${workingHours[i]} we have ${this.numOfCustPerHour[i]} customers and we sell ${this.totalCookiesPerHour[i]} Cookies`;
+      liElement.textContent = `at ${workingHours[i]}: ${this.totalCookiesPerHour[i]} Cookies`;
     }
 
   }
@@ -132,18 +126,16 @@ Dubai.render();
 
 const Paris = {
   name: 'Paris',
-  minCust: 3,
-  maxCust: 24,
-  AvgCookie: 1.2,
+  minCust: 20,
+  maxCust: 38,
+  AvgCookie: 2.3,
   numOfCustPerHour: [],//randomValue(min,max)(array)
   totalCookiesPerHour: [],//NumOfCust*avgCookie
   totalSales: 0,
   temp: [],
   getnum: function () {
     for (let i = 0; i < workingHours.length; i++) {
-      this.temp = Math.ceil(generateRandomNumber(this.minCust, this.maxCust));
-      Math.ceil(this.numOfCustPerHour.push(this.temp)[i]);
-      Math.ceil(this.totalCookiesPerHour.push(this.temp * this.AvgCookie)[i]);
+      this.totalCookiesPerHour.push(Math.ceil(this.AvgCookie*generateRandomNumber(this.minCust,this.maxCust)));
     }
   },
   render: function () {
@@ -152,16 +144,15 @@ const Paris = {
     const h1Element = document.createElement('h1');
     parentElement.appendChild(articleElement);
     parentElement.appendChild(h1Element);
-    h1Element.textContent = 'Welcome to Salmon cookie shop';
     const pElement = document.createElement('p');
     articleElement.appendChild(pElement);
-    pElement.textContent = `${this.name} shop has ${this.minCust} min number of customers, and ${this.maxCust} max number of customers and ${this.AvgCookie} avg cookie number per customer`;
+    pElement.textContent = `${this.name}`;
     const ulElement = document.createElement('ul');
     articleElement.appendChild(ulElement);
     for (let i = 0; i < workingHours.length; i++) {
       const liElement = document.createElement('li');
       ulElement.appendChild(liElement);
-      liElement.textContent = `at ${workingHours[i]} we have ${this.numOfCustPerHour[i]} customers and we sell ${this.totalCookiesPerHour[i]} Cookies`;
+      liElement.textContent = `at ${workingHours[i]}: ${this.totalCookiesPerHour[i]} Cookies`;
     }
 
   }
@@ -183,9 +174,7 @@ const Lima = {
   temp: [],
   getnum: function () {
     for (let i = 0; i < workingHours.length; i++) {
-      this.temp = Math.ceil(generateRandomNumber(this.minCust, this.maxCust));
-      Math.ceil(this.numOfCustPerHour.push(this.temp)[i]);
-      Math.ceil(this.totalCookiesPerHour.push(this.temp * this.AvgCookie)[i]);
+      this.totalCookiesPerHour.push(Math.ceil(this.AvgCookie*generateRandomNumber(this.minCust,this.maxCust)));
     }
   },
   render: function () {
@@ -194,16 +183,15 @@ const Lima = {
     const h1Element = document.createElement('h1');
     parentElement.appendChild(articleElement);
     parentElement.appendChild(h1Element);
-    h1Element.textContent = 'Welcome to Salmon cookie shop';
     const pElement = document.createElement('p');
     articleElement.appendChild(pElement);
-    pElement.textContent = `${this.name} shop has ${this.minCust} min number of customers, and ${this.maxCust} max number of customers and ${this.AvgCookie} avg cookie number per customer`;
+    pElement.textContent = `${this.name}`;
     const ulElement = document.createElement('ul');
     articleElement.appendChild(ulElement);
     for (let i = 0; i < workingHours.length; i++) {
       const liElement = document.createElement('li');
       ulElement.appendChild(liElement);
-      liElement.textContent = `at ${workingHours[i]} we have ${this.numOfCustPerHour[i]} customers and we sell ${this.totalCookiesPerHour[i]} Cookies`;
+      liElement.textContent = `at ${workingHours[i]}: ${this.totalCookiesPerHour[i]} Cookies`;
     }
 
   }
@@ -212,6 +200,122 @@ const Lima = {
 Lima.getnum();
 console.log(Lima);
 Lima.render();
+
+
+
+// //-------------------------------------------------------------------------------------
+// // homepage
+
+// function render2() {
+//   const parentElement = document.getElementById('home');
+//   const articleElement = document.createElement('article');
+//   const h1Element = document.createElement('h1');
+//   parentElement.appendChild(articleElement);
+//   parentElement.appendChild(h1Element);
+//   h1Element.textContent = 'Welcome to Salmon cookie shop';
+//   //h1Element.
+//   const pElement = document.createElement('p');
+//   articleElement.appendChild(pElement);
+//   const ulElement = document.createElement('ul');
+//   articleElement.appendChild(ulElement);
+
+
+// // pElement.textContent = `${this.name} shop has ${this.minCust} min number of customers, and ${this.maxCust} max number of customers and ${this.AvgCookie} avg cookie number per customer`;
+// }
+// render2();
+
+
+// ////////////////////////////////////////////////////
+// //building constructor
+// function shops(name,minCust,maxCust,avgCookie) {
+//   this.name= name;
+//   this.maxCust=maxCust;
+//   this.minCust-minCust;
+//   this.AvgCookie=avgCookie;
+//   this.numOfCustPerHour=numOfCustPerHour;
+//   this.totalCookiesPerHour=this.totalCookiesPerHour;
+//   this.customerArr=this.customerArr;
+  
+  
+// }
+
+// const seattle = new shops('seattle', 23, 65, 6.3);
+// seattle.randomCustomer(23, 65);
+// seattle.render();
+// console/log(seattle);
+
+// const Dubai = new shops('Dubai', 11, 38, 3.7);
+// seattle.randomCustomer(11, 38                         );
+// seattle.render();
+// console/log(Dubai);
+
+// const Paris = new shops('Paris', 23, 65, 6.3);
+// seattle.randomCustomer(23, 65);
+// seattle.render();
+// console/log(Paris);
+
+// const Lima = new shops('lLima', 23, 65, 6.3);
+// seattle.randomCustomer(23, 65);
+// seattle.render();
+// console/log(Lima);
+
+// const Tokyo = new shops('Tokyo', 23, 65, 6.3);
+// seattle.randomCustomer(23, 65);
+// seattle.render();
+// console/log(Tokyo);
+
+
+// salmonShop.prototype.randomCustomer=function () {
+//   for(let i=0;i<workingHours.length;i++){
+//     let hourSales=Math.ceil(randomNumber(this.minCust,this.maxCust)*avgCookie));
+//     this.customerArr.push(hourSales);
+//     maxCust*this.avgCookie;
+//   }
+  
+// };
+
+
+
+// salmonShop.prototype.render=function (params) {
+//   const tableElement = document.getElementsById('placeTable');
+
+//   const tr=document.createElement('tr');
+//   tableElement.appendChild('tr');
+
+    
+// }
+
+// const tableFooter=function () {
+//   const tableElement =document.getElementsById('placeTable');
+
+//   const tr=document.createElement('tr');
+//   tableElement.appendChild(tr);  
+//   const th1=document.createElement('th');
+//   tr.appendChild(th1);
+//   th1.textContent='total'
+//   for(let i =0 ;i<workingHours.length;i++){
+//     consr th2 = document.createElement('th');
+//     tr.appendChild('th2');
+//     th2.textContent=
+// ;  }
+// }
+
+
+// const td3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

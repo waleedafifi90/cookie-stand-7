@@ -1,4 +1,4 @@
-function render() {
+function render2() {
   img='./img/Salmon.PNG',
   const parentElement = document.getElementById('home');
   const articleElement = document.createElement('article');
@@ -17,4 +17,4 @@ function render() {
 
 // pElement.textContent = `${this.name} shop has ${this.minCust} min number of customers, and ${this.maxCust} max number of customers and ${this.AvgCookie} avg cookie number per customer`;
 }
-render();
+render2();
