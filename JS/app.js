@@ -557,6 +557,7 @@ let workingHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '
 function randomNumber(min, max) {
   return Math.ceil(Math.random() * (max - min) + min);
 }
+let columnHeader = ['cookies/h', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm','8pm','DailyLocationTotal'];
 
 function Shops(name, minCust, maxCust, avgCookie) {
   this.name = name;
@@ -577,36 +578,124 @@ function Shops(name, minCust, maxCust, avgCookie) {
   };
   console.log(this.numOfCust);
   Shops.prototype.render = function () {
-    const parentElement = document.getElementById('shop');
-    const h1Element = document.createElement('h1');
-    parentElement.appendChild(h1Element);
-    h1Element.textContent = `${this.name}`;
-    const articleElement = document.createElement('article');
-    const pElement=document.createElement('p');
-    parentElement.appendChild(articleElement);
-    parentElement.appendChild(pElement);
-    pElement.textContent=`the total is ${this.totalNumOfCook} Cookies`;
-    const ulElement = document.createElement('ul');
-    articleElement.appendChild(ulElement);
-    for (let j = 0; j < workingHours.length; j++) {
-      const liElement = document.createElement('li');
-      ulElement.appendChild(liElement);
-      liElement.textContent = `at ${workingHours[j]}: ${this.numOfCookPerHour[j]} Cookies`;
-
+    const tableElement = document.getElementById('mytable');
+    const trElement = document.createElement('tr');
+    tableElement.appendChild(trElement);
+    const thElement = document.createElement('th');
+    trElement.appendChild(thElement);
+    thElement.textContent=`${this.name}`;
+    for(let i = 0; i <workingHours.length; i++) {
+      const tdElement = document.createElement('td');
+      trElement.appendChild(tdElement);
+      tdElement.textContent = this.numOfCookPerHour[i];
     }
+    const tdElement = document.createElement('td');
+    trElement.appendChild(tdElement);
+    tdElement.textContent = this.totalNumOfCook;
   };
 }
+const header = function () {
+  const parentElement = document.getElementById('shop');
+  const tableHead = document.createElement('table');
+  parentElement.appendChild(tableHead);
+  tableHead.setAttribute('id', 'mytable');
+  const tr = document.createElement('tr');
+  tableHead.appendChild(tr);
+  for (let i = 0; i < columnHeader.length; i++) {
+    const th1 = document.createElement('tH');
+    tr.appendChild(th1);
+    th1.textContent = columnHeader[i];
+  }
+};
+// Shops.prototype.render2=function () {
+//   for(let i = 0; i <workingHours.length; i++) {
+//     const thElement = document.createElement('th');
+//     this.articleElement.appendChild(thElement);
+//     thElement.textContent = this.numOfCookPerHour[i];
+//   }
+// };
+//     const h1Element = document.createElement('h1');
+//     parentElement.appendChild(h1Element);
+//     h1Element.textContent = `${this.name}`;
 //     const pElement=document.createElement('p');
-//     parentElement.appendChild(articleElement);
 //     parentElement.appendChild(pElement);
-//     pElement.textContent=`total number ${this.totalNumOfCook}`;
-//     const ulElement=document.createElement('ul');
-//     articleElement.appendChild(ulElement);
-//     for(let i=0;i<workingHours.length;i++)
-//     {
-//       const liElement=document.createElement('li');
-//       ulElement.appendChild(liElement);
-//       liElement.textContent=`at ${workingHours[i]}:${this.numOfCookPerHour[i]} Cookies`;
+//     pElement.textContent=`the total is ${this.totalNumOfCook} Cookies`;
+//     articleElement.appendChild(tableElement);
+
+//     const tr1Element = document.createElement('tr');
+//     tableElement.appendChild(tr1Element);
+
+//     const th1Element = document.createElement('th');
+//     tr1Element.appendChild(th1Element);
+//     th1Element.textContent = 'Is Good with Other Cat';
+
+//     const th2Element = document.createElement('th');
+//     tr1Element.appendChild(th2Element);
+//     th2Element.textContent = 'Is Good with Kids';
+//     const th3Element = document.createElement('th');
+//     tr1Element.appendChild(th3Element);
+//     th3Element.textContent = 'Is Good with Dog';
+
+//     const tr2Element = document.createElement('tr');
+//     tableElement.appendChild(tr2Element);
+
+//     const td1Element = document.createElement('td');
+//     tr2Element.appendChild(td1Element);
+//     td1Element.textContent = this.isGoodWithOtherCat;
+
+//     const td2Element = document.createElement('td');
+//     tr2Element.appendChild(td2Element);
+//     td2Element.textContent = this.isGoodWithKids;
+
+//     const td3Element = document.createElement('td');
+//     tr2Element.appendChild(td3Element);
+//     td3Element.textContent = this.isGoodWithDogs;
+
+//     const trElement = document.createElement('tr');
+//     articleElement.appendChild(trElement);
+
+//     for(let i = 0; i <workingHours.length; i++) {
+//       const trElement = document.createElement('tr');
+//       trElement.appendChild(trElement);
+//       trElement.textContent = this.numOfCookPerHour[i];
+//     }
+//     // articleElement.appendChild(tableElement);
+//     // const tr1Element = document.createElement('tr');
+//     // tableElement.appendChild(tr1Element);
+//     // tr1Element.textContent = `${this.name}`;
+//     // const tr2Element = document.createElement('tr');
+//     // articleElement.appendChild(tableElement);
+//     // tr2Element.textContent = `${this.name}`;
+
+//     // const tr3Element = document.createElement('tr');
+//     // articleElement.appendChild(tableElement);
+//     // tr3Element.textContent = `${this.name}`;
+
+//     // const tr4Element = document.createElement('tr');
+//     // articleElement.appendChild(tableElement);
+//     // tr4Element.textContent = `${this.name}`;
+
+
+//     // for (let j = 0; j < workingHours.length; j++) {
+//     //   const trElement = document.createElement('tr');
+//     //   tableElement.appendChild(trElement);
+//     //   trElement.textContent = `at ${workingHours[j]}: ${this.numOfCookPerHour[j]} Cookies`;
+
+//     // }
+//   };
+// }
+// //     const pElement=document.createElement('p');
+// //     parentElement.appendChild(articleElement);
+// //     parentElement.appendChild(pElement);
+// //     pElement.textContent=`total number ${this.totalNumOfCook}`;
+// //     const ulElement=document.createElement('ul');
+// //     articleElement.appendChild(ulElement);
+// //     for(let i=0;i<workingHours.length;i++)
+// //     {
+// //       const liElement=document.createElement('li');
+// //       ulElement.appendChild(liElement);
+// //       liElement.textContent=`at ${workingHours[i]}:${this.numOfCookPerHour[i]} Cookies`;
+header();
 const seattle = new Shops('seattle', 23, 65, 6.3);
 seattle.getRandom(23,65);
 seattle.render();
@@ -626,6 +715,26 @@ Paris.render();
 const Lima = new Shops('Lima', 2, 16, 4.8);
 Lima.getRandom(2,16);
 Lima.render();
+const footer = function () {
+  const tableElement = document.getElementById('mytable');
+  const tr = document.createElement('tr');
+  tableElement.appendChild(tr);
+  const th1 = document.createElement('th');
+  tr.appendChild(th1);
+  th1.textContent = 'Totals';
+  for (let i = 0; i < workingHours.length; i++) {
+    const th2 = document.createElement('th');
+    tr.appendChild(th2);
+    th2.textContent = seattle.numOfCookPerHour[i] + Tokoyo.numOfCookPerHour[i] + Dubai.numOfCookPerHour[i] + Paris.numOfCookPerHour[i] + Lima.numOfCookPerHour[i];
+  }
+  const th2 = document.createElement('th');
+  tr.appendChild(th2);
+  th2.textContent = seattle.totalNumOfCook + Tokoyo.totalNumOfCook + Dubai.totalNumOfCook + Paris.totalNumOfCook + Lima.totalNumOfCook;
+};
+
+footer();
+
+
 // const Tokyo=new Shops('Tokyo',3,24,1.2);
 // seattle.maysaa();
 // console.log(Tokyo.numOfCookPerHour);
