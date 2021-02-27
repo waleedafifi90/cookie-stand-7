@@ -1,5 +1,90 @@
-header{
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+* {
+  box-sizing: border-box;
+  align-items: center;
+   }
+   main {
+    background-color: khaki;
+       
+   }
 
+   ul {margin-left: 20px;
+    float: left;
+    margin-right: 250px;
+    list-style-image: url("/img/rsz_11cokie.jpg");}
+    #wH {
+        color: salmon;
+        text-decoration: salmon;
+        text-shadow: seagreen;
+        text-underline-offset:inherit;
+        font-size: xx-large;
+        margin-right: 100px;
+        margin-top: 100px;
+        float: inline-start;
+        
+    }
 
+    #shop{
+        border:brown;
+        font-size: x-large;
+        font-family:sans-serif;
+        color: darkgreen;
+        text-decoration: darksalmon;
+        text-align: center;
+        background-color:lightcoral;
+        border: limegreen;       
+    }   
+    
+    li {
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: saddlebrown;
+    margin: 10px 0px 0px 0px;}
+
+   header{
+       background-color: khaki;
+   }
+  header img{
+       position:relative;
+       margin-top: 75px;
+       margin-left: 250px;       
+      }
+      body main{
+          position:absolute;
+      }
+      body header p{
+position: relative;    
+margin-left: 250px; 
+     width: 900px;
+          margin-top: 50px;
+          color:maroon;
+          font-size: x-large;
+
+                          }
+header nav{
+    font-size: xx-large;
+    font-style: oblique;
+    font-family:sans-serif;
+    color: darkorange;
+    background-color:#a87878;
+    margin-left: 50px;
+    }
+    header nav :nth-child(odd){
+        padding: 100px;
+        color: darkorange;
+    }
+body header h1{
+    align-self: center;
+    color: brown;
+    font-style: italic;
+    font-size: xx-large;
 }
+body{
+    background-color: khaki;
+}
+
+table, th, td {
+    border: 1px ;
+    border-style: groove;
+    border-color: maroon;
+    border-style: double;
+  }
