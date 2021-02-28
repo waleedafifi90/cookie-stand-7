@@ -452,7 +452,9 @@ function Shops(name, minCust, maxCust, avgCookie) {
   this.totalNumOfCook = 0;
   Shops.allShops.push(this);
 }
+
 Shops.allShops=[];
+
 Shops.prototype.getRandom = function () {
   for (let i = 0; i < workingHours.length; i++) {
     let x = Math.ceil(randomNumber(this.minCust, this.maxCust));
@@ -462,7 +464,7 @@ Shops.prototype.getRandom = function () {
     this.totalNumOfCook = this.numOfCookPerHour[i] + this.totalNumOfCook;
   }
 };
-console.log(this.numOfCust);
+// console.log(this.numOfCust);
 Shops.prototype.render = function () {
   const tableElement = document.getElementById('mytable');
   const trElement = document.createElement('tr');
@@ -512,7 +514,9 @@ Paris.render();
 const Lima = new Shops('Lima', 2, 16, 4.8, []);
 Lima.getRandom(2, 16);
 Lima.render();
-console.log(Shops.allShops);
+
+// console.log(Shops.allShops);
+
 
 const footer = function () {
   const tableElement = document.getElementById('mytable');
@@ -521,27 +525,32 @@ const footer = function () {
   const th1 = document.createElement('th');
   tr.appendChild(th1);
   th1.textContent = 'Totals';
+
+
+
   for (let i = 0; i < workingHours.length; i++) {
     const th2 = document.createElement('th');
     tr.appendChild(th2);
-    th2.textContent = seattle.numOfCookPerHour[i] + Tokoyo.numOfCookPerHour[i] + Dubai.numOfCookPerHour[i] + Paris.numOfCookPerHour[i] + Lima.numOfCookPerHour[i];
+
+    let total = 0;
+
+    for(let j = 0; j < Shops.allShops.length; j++) {
+      total += Shops.allShops[j].numOfCookPerHour[i];
+    }
+    console.log(total);
+    th2.textContent = total;
   }
   const th3 = document.createElement('th');
   tr.appendChild(th3);
-  th3.textContent = seattle.totalNumOfCook + Tokoyo.totalNumOfCook + Dubai.totalNumOfCook + Paris.totalNumOfCook + Lima.totalNumOfCook;
   let totalCookies = 0;
   for (let j = 0; j <Shops.allShops.length; j++) {
-    totalCookies += parseInt(Shops.allShops[j].numOfCookPerHour[j]);
+    totalCookies += parseInt(Shops.allShops[j].totalNumOfCook);
   }
   th3.textContent = totalCookies;
-  const th4 = document.createElement('th');
-  tr.appendChild(th4);
-  th4.textContent = seattle.totalNumOfCook + Tokoyo.totalNumOfCook + Dubai.totalNumOfCook + Paris.totalNumOfCook + Lima.totalNumOfCook;
 };
 
-
-Shops.allShops = [];
 footer();
+
 const formElement = document.getElementById('addnewshop');
 formElement.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -549,10 +558,18 @@ formElement.addEventListener('submit', function (event) {
   const minCust1 = event.target.min_Cust.value;
   const maxCust2 = event.target.max_Cust.value;
   const avdCook3 = event.target.avg_Cook.value;
-  document.getElementById('mytable').removeChild(document.getElementById('mytable').lastChild);
-  const shop = new Shops(shopName0, minCust1, maxCust2, avdCook3);
-  formElement.reset();
-  shop.getRandom(minCust1, maxCust2);
-  shop.render();
+
+  if(Number(minCust1) >= Number(maxCust2)) {
+    // console.log(m)
+    alert('The max customer need to be grater than the min customer');
+  } else {
+    document.getElementById('mytable').removeChild(document.getElementById('mytable').lastChild);
+    const shop = new Shops(shopName0, minCust1, maxCust2, avdCook3);
+    formElement.reset();
+    shop.getRandom(minCust1, maxCust2);
+    shop.render();
+    footer();
+  }
+
 });
 console.log(Shops.allShops);
